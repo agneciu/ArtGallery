@@ -6,6 +6,9 @@ import CustomerSupportPage from './components/pages/CustomerSupportPage/Customer
 import GalleryPage from './components/pages/GalleryPage/GalleryPage';
 
 function App() {
+
+  // const[selectedPage, setSelectedPage] = useState();
+
   return (
     <div>
     <Navbar />
