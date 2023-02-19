@@ -1,0 +1,21 @@
+.navbar {
+    height: 50px;
+    background-color: rgb(78, 114, 136);
+    color: white;
+    padding: 20px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar > p {
+    font-size: 20px;
+}
+
+.navbar > .buttonGroup {
+    display: flex;
+    gap:10px;
+    justify-content: flex-end;
+    
+}
