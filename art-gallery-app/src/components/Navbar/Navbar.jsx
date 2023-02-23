@@ -9,7 +9,7 @@ const Navbar = ({ pages }) => {
         <p>Virtual Gallery</p>
         <div className="buttonGroup">
         {pages?.map((page) => {
-          return <Link key={page.to} to={page.to}>{page.label}</Link>
+          return <Link className="navbarLinks" key={page.to} to={page.to}>{page.label}</Link>
         })}
         </div>
     </div>
