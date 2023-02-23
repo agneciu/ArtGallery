@@ -1,21 +1,45 @@
 import Layout from './components/Layout/Layout';
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
-import HomePage from './components/pages/HomePage/HomePage';
-import CustomerSupportPage from './components/pages/CustomerSupportPage/CustomerSupportPage';
-import GalleryPage from './components/pages/GalleryPage/GalleryPage';
+import HomePage from './pages/HomePage/HomePage';
+import CustomerSupportPage from './pages/CustomerSupportPage/CustomerSupportPage';
+import GalleryPage from './pages/GalleryPage/GalleryPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import { routes } from './constants/routes';
+import { useMemo } from "react";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
 
-  // const[selectedPage, setSelectedPage] = useState();
+  const navbarLinks = useMemo(() => {
+    return [
+      {
+        to: routes.homePage,
+        label: "Home",
+      },
+      {
+        to: routes.customerSupportPage,
+        label: "Customer Support Page",
+      },
+      {
+        to: routes.galleryPage,
+        label: "Gallery Page",
+      },
+    ];
+  }, []);
+ 
 
   return (
     <div>
-    <Navbar />
+    <Navbar pages={navbarLinks}/>
     <Layout> 
-      <HomePage />
-      <GalleryPage />
-      <CustomerSupportPage />
+      <Routes>
+        <Route path={routes.homePage} element={<HomePage/>}/>
+        <Route path={routes.customerSupportPage} element={<CustomerSupportPage/>}/>
+        <Route path={routes.galleryPage} element={<GalleryPage/>}/>
+        <Route path="*" element={<NotFoundPage/>}/>
+      </Routes>
+    
     </Layout>
     
     </div>
