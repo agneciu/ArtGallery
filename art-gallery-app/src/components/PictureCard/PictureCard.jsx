@@ -1,9 +1,15 @@
-import styles from "./PictureCard.css"
+import styles from "./PictureCard.module.css";
+import React from "react";
 
-export const PictureCard = () => {
+const PictureCard = ({src , alt}) => {
  return (
- <div className={styles.root}>
- <img className={styles.image} src={src} alt={alt}></img>
- </div>
+    <div>
+  <div className={styles.root}>
+    <img className={styles.image} src={src} alt={alt} />
+  </div>
+  <p className={styles.author}>{alt}</p>
+  </div>
  )
 }
+
+export default PictureCard;

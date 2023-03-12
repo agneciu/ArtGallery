@@ -10,18 +10,20 @@
 }
 
 .navbar > p {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .navbar > .buttonGroup {
     display: flex;
-    gap:10px;
+    gap: 25px;
     justify-content: flex-end;
-    font-size: 22px;
+    
     
 }
 
 .navbarLinks {
     color: white;
+    font-size: 16px;
+    text-decoration: none;
     
 }

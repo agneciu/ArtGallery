@@ -7,4 +7,4 @@ return <div>
 </div>
 }
 
-export default Topic
+export default Topic;
