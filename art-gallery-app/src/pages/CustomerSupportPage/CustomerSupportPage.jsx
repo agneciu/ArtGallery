@@ -2,6 +2,7 @@ import CustomerSupportForm from "../../components/CustomerSupportForm/CustomerSu
 
 const data = [];
 
+
 const CustomerSupportPage = () => {
     return (
     <div>
@@ -9,5 +10,7 @@ const CustomerSupportPage = () => {
     </div>
     )
 }
+
+
 
 export default CustomerSupportPage;

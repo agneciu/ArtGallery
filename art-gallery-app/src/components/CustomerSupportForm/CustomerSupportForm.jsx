@@ -20,30 +20,33 @@ const CustomerSupportForm = ({ savedForm }) => {
     console.log(savedForm);
   };
 
-  const getFullName = (e) => {
-    setFullName(e.target.value);
+  const getFullName = (value) => {
+    setFullName(value);
+    
   };
 
-  const getEmail = (e) => {
-    setEmail(e.target.value);
+  const getEmail = (value) => {
+    setEmail(value);
   };
 
-  const getMessage = (e) => {
-    setMessage(e.taget.value);
+  const getMessage = (value) => {
+    setMessage(value);
   };
 
   return (
-    <div>
+    <div className="support-form">
+  
       <Topic
         title="Contact customer support"
         description="We take every request into a consideration and we will reach out to you as fast as possible"
       ></Topic>
-      <Input
+   
+      <Input 
         onChange={getFullName}
         required
-        placeholder="Full Name"
+        placeholder="Last Name"
         type="text"
-        label="Full Name"
+        label="Full Name: "
         id={fullName}
       ></Input>
       <Input
@@ -51,14 +54,14 @@ const CustomerSupportForm = ({ savedForm }) => {
         required
         placeholder="Email"
         type="email"
-        label="Email"
+        label="Email: "
         id={email}
       ></Input>
       <TextArea
         onChange={getMessage}
         name="Your message to us"
         id={message}
-        placeholder="Your message to us"
+        placeholder=" Your message to us"
       ></TextArea>
       <Button label="Save" onClick={onSave}></Button>
     </div>

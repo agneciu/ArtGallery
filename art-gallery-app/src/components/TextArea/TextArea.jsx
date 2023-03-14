@@ -1,9 +1,9 @@
 
-const TextArea = ({ placeholder, label, Id, error }) => {
+const TextArea = ({ placeholder, label, Id, error, onChange }) => {
     const getValue = (e) => {
         const value = e.target.value;
-        return value;
-      };
+        onChange(value);
+    }
 
     return (
     <div>
