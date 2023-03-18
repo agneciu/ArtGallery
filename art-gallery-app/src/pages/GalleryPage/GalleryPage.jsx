@@ -24,8 +24,10 @@ const GalleryPage = () => {
         },
       })
       .then((res) => res.json())
-      .then((data)=>setArt(data)); 
-
+      .then((data)=>{
+        setArt(data)
+       
+      });
     }
 
     useEffect(() => {
@@ -40,15 +42,35 @@ const GalleryPage = () => {
     // }
 
 
+    //await - pauses the execution of an asynchronous function until the Promise is resolved
+    // when returning a Promise inside an async function, you don’t need to use await
+
     const onNextPage = async () => {
-    setLoading(true);
-    try{
-      getImages(art._links.next?.href);
-    } catch (_) {
-      setErrMessage("Something went wrong!");
-    }
-    setLoading(false);
-  };
+      setLoading(true);
+      try {
+        await getImages(art._links.next?.href);
+        setArt([...art, ...data.__embedded.artworks]);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setErrMessage("Something went wrong!");
+        setLoading(false);
+      }
+    };
+
+
+  // const onNextPage = async () => {
+  //   setLoading(true);
+  //   try{
+  //     getImages(art._links.next?.href);
+  //   } catch (_) {
+  //     setErrMessage("Something went wrong!");
+  //   }
+  //   setLoading(false);
+  // };
+
+
+
 
 return <div>
     <Topic title={""} description={""}/>
