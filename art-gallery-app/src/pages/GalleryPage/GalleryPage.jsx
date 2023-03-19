@@ -3,7 +3,6 @@ import Grid from "../../components/Grid/Grid";
 import { useEffect } from "react";
 import { useState } from "react";
 import PictureCard from "../../components/PictureCard/PictureCard";
-import data from "../../components/data/image_list.json";
 import Container from "../../components/Container/Container";
 import Button from "../../components/Button/Button";
 
@@ -13,9 +12,10 @@ const GalleryPage = () => {
   
     const [errMessage, setErrMessage] = useState("");
     const [art, setArt] = useState();
+    const [addMoreArt, setAddMoreArt] = useState([]); //an array to store/load additional art// setArt state could not be used, it delivers an error with an empty page
     const [loading, setLoading] = useState(false); //kaip pas Vytauta, to-do list'e, ta pati logika
+    // const [page, setPage] = useState("https://api.artsy.net/api/artworks?total_count=1&size=6") not needed anymore
    
-  
     function getImages(address) {
       return fetch(address, {
         headers: {
@@ -26,6 +26,7 @@ const GalleryPage = () => {
       .then((res) => res.json())
       .then((data)=>{
         setArt(data)
+        setAddMoreArt([...addMoreArt, ...data._embedded.artworks])
        
       });
     }
@@ -45,22 +46,19 @@ const GalleryPage = () => {
     //await - pauses the execution of an asynchronous function until the Promise is resolved
     // when returning a Promise inside an async function, you don’t need to use await
 
-    const onNextPage = async () => {
+    const onNextPage = () => {
       setLoading(true);
-      try {
-        await getImages(art._links.next?.href);
-        setArt([...art, ...data.__embedded.artworks]);
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-        setErrMessage("Something went wrong!");
-        setLoading(false);
-      }
+      getImages(art._links.next?.href)
+    
+      .catch ((err) => 
+      // if i try to console.log things here - the loading breaks down, interesting
+        setErrMessage("Something went wrong!")
+      )
+      setLoading(false);
+      
     };
 
   
-
-
   // const onNextPage = async () => {
   //   setLoading(true);
   //   try{
@@ -72,15 +70,13 @@ const GalleryPage = () => {
   // };
 
 
-
-
 return <div>
     <Topic title={""} description={""}/>
     <Container>
     {errMessage && <h1>{errMessage}</h1>}
-        {!errMessage && (loading ? <h2>Gallery is laoding...</h2> :
-    <Grid columns= {3}>
-    {art?._embedded.artworks.map((artwork)=> {
+        {!errMessage && (loading ? <h2>Gallery is loading...</h2> :
+    <Grid>
+    {addMoreArt?.map((artwork)=> {
             return (<PictureCard src={artwork._links.image.href.replace(
               "{image_version}",
               "medium"
@@ -91,5 +87,7 @@ return <div>
     </Container>
 </div>
 }
+
+// we use addMoreArt to map instead of previously used art?._embedded.artworks to display art + extra laoded art
 
 export default GalleryPage;
