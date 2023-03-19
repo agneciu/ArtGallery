@@ -1,5 +1,6 @@
 export const routes = {
     homePage:"/",
     customerSupportPage: "/support",
-    galleryPage: "/gallery"
+    galleryPage: "/gallery",
+    artworkPage: "/artwork"
 }

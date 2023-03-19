@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './pages/HomePage/HomePage';
 import CustomerSupportPage from './pages/CustomerSupportPage/CustomerSupportPage';
 import GalleryPage from './pages/GalleryPage/GalleryPage';
+import ArtworkPage from './pages/ArtworkPage/ArtworkPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { routes } from './constants/routes';
 import { useMemo } from "react";
@@ -25,6 +26,12 @@ function App() {
         to: routes.galleryPage,
         label: "Gallery Page",
       },
+      {
+        to: routes.artworkPage,
+        label: "Artwork Page",
+      },
+
+
     ];
   }, []);
  
@@ -37,6 +44,7 @@ function App() {
         <Route path={routes.homePage} element={<HomePage/>}/>
         <Route path={routes.customerSupportPage} element={<CustomerSupportPage/>}/>
         <Route path={routes.galleryPage} element={<GalleryPage/>}/>
+        <Route path={routes.artworkPage} element={<ArtworkPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
     

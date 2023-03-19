@@ -49,7 +49,7 @@ const GalleryPage = () => {
     const onNextPage = () => {
       setLoading(true);
       getImages(art._links.next?.href)
-    
+      // setAddMoreArt([...addMoreArt, ...data._embedded.artworks]) needs to be moved, page crashes
       .catch ((err) => 
       // if i try to console.log things here - the loading breaks down, interesting
         setErrMessage("Something went wrong!")
@@ -58,7 +58,6 @@ const GalleryPage = () => {
       
     };
 
-  
   // const onNextPage = async () => {
   //   setLoading(true);
   //   try{
@@ -68,7 +67,6 @@ const GalleryPage = () => {
   //   }
   //   setLoading(false);
   // };
-
 
 return <div>
     <Topic title={""} description={""}/>
