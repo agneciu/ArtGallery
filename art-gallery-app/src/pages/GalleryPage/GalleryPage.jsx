@@ -78,7 +78,7 @@ return <div>
             return (<PictureCard src={artwork._links.image.href.replace(
               "{image_version}",
               "medium"
-            )} alt ={artwork.title} title={artwork.title} key={artwork.title + artwork.id}/>)
+            )} alt ={artwork.title} title={artwork.title} key={artwork.title + artwork.id} id={artwork.id}/>)
           })}
     </Grid>)}
     <Button className="galleryPageBtn" label="Load more" onClick={onNextPage}></Button>

@@ -25,12 +25,7 @@ function App() {
       {
         to: routes.galleryPage,
         label: "Gallery Page",
-      },
-      {
-        to: routes.artworkPage,
-        label: "Artwork Page",
-      },
-
+      }
 
     ];
   }, []);
